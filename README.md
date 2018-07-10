@@ -38,8 +38,7 @@ http://contrib.scikit-learn.org/imbalanced-learn/stable/index.html
 在参数方面：
 
 一些新的思考：
-最后一句：
-生活硬是把我这样精致的猪猪女孩变成了IT民工！！！！
+
 
 我的尝试（失败了的。。。）
 
