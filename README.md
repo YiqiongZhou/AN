@@ -29,11 +29,19 @@ https://dc.cloud.alipay.com/index#/topic/data?id=4
 模糊样本数:
 
 # 我的思路：
-直接利用所有数据，并不作处理
+初赛：
+数据比较单纯，所以直接缺失值填充处理后，进行特征筛选，然后放入xgb模型中，调参之后，
 
 # 具体细节：
 
 ### 缺失值填充方面：
+在初赛中因为缺乏对具体数据含义的理解，所以我只能多多尝试不同的缺失值填充的方法：
+我尝试过对于离散变量用众数填充，对于连续变量用平均值填充；
+全部用众值填充；
+全部用平均值填充；
+不填充；
+最后发现xgb模型中不填充缺失值的效果是最好的：
+（在这里顺便学习了一下xgb填充缺失值的原理，xgb填充缺失值时是把样本分别放在左右两个子树中判断，选择信息增益大的那个子树）
 
 ### 处理模糊样本方面：
 官方给出的介绍有提到过，模糊样本的来源在于他们之前的系统砍掉的交易，因为他们认为这些交易有风险，所以砍掉。
@@ -61,6 +69,11 @@ http://contrib.scikit-learn.org/imbalanced-learn/stable/index.html
 问了一个老哥，老哥说这个网络调参还是需要技术的。。。难受。。
 
 ### 在使用规则方面：
+根据官方的一些指示，白样本的pattern往往是稳定的，而黑样本是会根据各种条件不断的变化自己的行为模式从而进行欺诈
+所以这种情况下白样本往往能提炼出一些稳定的规则（if-else）
+我在这里的做法是：把所有的白样本提起出来，观测每个特征的取值，这个时候
+然而这样做的现实是：并没有什么。。用
+
 
 
 ### 在特征工程方面：
@@ -68,11 +81,16 @@ http://contrib.scikit-learn.org/imbalanced-learn/stable/index.html
 
 ### 在参数方面：
 我的调参过程是这样的：我采用的是gridsearch进行调参
-附上我的调参教程：
+附上我的调参教程：https://github.com/aarshayj/Analytics_Vidhya/blob/master/Articles/Parameter_Tuning_XGBoost_with_Example/XGBoost%20models.ipynb
+https://blog.csdn.net/han_xiaoyang/article/details/52665396
+我的调参主要是根据：
+调参顺序：depth -> 
+
 
  
 一些新的思考：
-官方给出的一些想法非常值得我慢慢评为
+官方给出的一些想法非常值得我慢慢品味：
+tips1:
 
 
 
